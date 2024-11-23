@@ -1,14 +1,37 @@
 {% extends "learning_logs/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Register{% endblock %}
 
 {% block content %}
-  <h2>Register</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-  </form>
-
-  {% if form.errors %}
-    <p>There were errors in the form. Please correct them and try again.</p>
-  {% endif %}
+<div class="container">
+    <h2 class="mt-4 text-center">Register</h2>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Username</label>
+            {{ form.username|add_class:"form-control" }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="id_password1" class="form-label">Password</label>
+            {{ form.password1|add_class:"form-control" }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="id_password2" class="form-label">Confirm Password</label>
+            {{ form.password2|add_class:"form-control" }}
+        </div>
+        
+        <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+    
+    {% if form.errors %}
+    <div class="alert alert-danger mt-3" role="alert">
+        <p>There were errors in the form. Please correct them and try again.</p>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
+
