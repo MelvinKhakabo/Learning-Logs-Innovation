@@ -1,0 +1,14 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+  <h2>Register</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+
+  {% if form.errors %}
+    <p>There were errors in the form. Please correct them and try again.</p>
+  {% endif %}
+{% endblock %}
