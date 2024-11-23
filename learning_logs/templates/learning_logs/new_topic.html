@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+
+{% block title %}Add New Topic{% endblock %}
+
+{% block content %}
+  <h2>Add a New Topic</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Topic</button>
+  </form>
+  <!-- Redirect Cancel to Topics Page -->
+  <a href="{% url 'learning_logs:topics' %}">Cancel</a>
+{% endblock %}
+
+

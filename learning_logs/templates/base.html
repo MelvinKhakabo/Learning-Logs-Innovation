@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Learning Log{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Learning Log</h1>
+    </header>
+    <nav>
+        <p>
+            <a href="{% url 'learning_logs:index' %}">Learning Log</a> - 
+            <a href="{% url 'learning_logs:topics' %}">Topics</a> - 
+            {% if user.is_authenticated %}
+                Hello, {{ user.username }}. 
+                <a href="{% url 'users:logout' %}">Log out</a>
+            {% else %}
+                <a href="{% url 'users:login' %}">Log in</a> | 
+                <a href="{% url 'users:register' %}">Register</a>  <!-- Add Register link here -->
+            {% endif %}
+        </p>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
