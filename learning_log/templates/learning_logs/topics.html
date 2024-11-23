@@ -3,19 +3,23 @@
 {% block title %}Topics{% endblock %}
 
 {% block content %}
-  <h2>Topics</h2>
-  <ul>
-    {% for topic in topics %}
-      <li>
-        <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic.text }}</a>
-      </li>
-    {% empty %}
-      <li>No topics have been added yet.</li>
-    {% endfor %}
-  </ul>
-  <!-- Add a New Topic Link -->
-  <a href="{% url 'learning_logs:new_topic' %}">Add a New Topic</a>
-{% endblock %}
+<div class="container">
+    <h2 class="mt-4 text-primary">Topics</h2>
+    {% if topics %}
+        <ul class="list-group">
+            {% for topic in topics %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <a href="{% url 'learning_logs:topic' topic.id %}" class="text-decoration-none">{{ topic.text }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No topics have been added yet.</p>
+    {% endif %}
 
+    <!-- Add New Topic Link -->
+    <a href="{% url 'learning_logs:new_topic' %}" class="btn btn-success mt-4">Add a New Topic</a>
+</div>
+{% endblock %}
 
 

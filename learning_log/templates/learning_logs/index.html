@@ -3,6 +3,17 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h2>Welcome to Learning Log</h2>
-<p>This is the homepage for your Learning Log app.</p>
+<div class="container">
+    <h2 class="mt-4 text-primary">Welcome to Learning Log</h2>
+    <p>This is the homepage for your Learning Log app. Start logging your learning journey!</p>
+
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <button name="submit" class="btn btn-success">Add Entry</button>
+        <a href="{% url 'learning_logs:topics' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
 {% endblock %}
