@@ -3,24 +3,41 @@
 {% block title %}{{ topic.text }}{% endblock %}
 
 {% block content %}
-<h2>Topic: {{ topic.text }}</h2>
-<p>Date added: {{ topic.date_added }}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mt-4 text-primary">Topic: {{ topic.text }}</h2>
+            <p class="text-muted">Date added: {{ topic.date_added }}</p>
+        </div>
+    </div>
 
-<h3>Entries:</h3>
-<ul>
-    {% for entry in entries %}
-        <li>
-            <p>{{ entry.date_added|date:"F j, Y H:i" }}</p>
-            <p>{{ entry.text }}</p>
-        </li>
-    {% empty %}
-        <li>No entries have been added yet for this topic.</li>
-    {% endfor %}
-</ul>
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mt-4">Entries:</h3>
+            {% if entries %}
+                <ul class="list-group">
+                    {% for entry in entries %}
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">{{ entry.date_added|date:'M d, Y H:i' }}</span>
+                                <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="btn btn-sm btn-outline-primary">Edit Entry</a>
+                            </div>
+                            <p class="mt-2">{{ entry.text|linebreaks }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No entries have been added yet for this topic.</p>
+            {% endif %}
+        </div>
+    </div>
 
-<!-- Add the new entry link here -->
-<a href="{% url 'learning_logs:new_entry' topic.id %}">Add a New Entry</a>
-
-<!-- Link to navigate back to the topics list -->
-<a href="{% url 'learning_logs:topics' %}">Back to Topics</a>
+    <!-- Add a new entry button -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-success">Add a New Entry</a>
+            <a href="{% url 'learning_logs:topics' %}" class="btn btn-secondary">Back to Topics</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

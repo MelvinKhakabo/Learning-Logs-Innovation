@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'learning_logs/index.html')
+    return render(request, 'learning_logs/home.html')
 
 
 from django.shortcuts import render
@@ -124,7 +124,10 @@ def edit_entry(request, entry_id):
 
 
 from django.shortcuts import render
+from .models import Topic
 
-def index(request):
-    """The home page for the learning_logs app."""
-    return render(request, 'learning_logs/index.html')  # Render your home page template
+def home(request):
+    """The home page for Learning Log."""
+    return render(request, 'learning_logs/home.html')
+# learning_logs/views.py
+

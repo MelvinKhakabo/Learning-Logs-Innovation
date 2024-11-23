@@ -1,13 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Learning</title>
-</head>
-<body>
-    <h1>Welcome to the Learning Log!</h1>
-    <a href="{% url 'users:login' %}">Login</a>
-    <a href="{% url 'users:register' %}">Register</a>
-    <a href="{% url 'users:logout' %}">Logout</a>
-</body>
-</html>
+{% extends "learning_logs/base.html" %}
+
+{% block title %}Welcome to Learning Log{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mt-4 text-primary">Welcome to the Learning Log!</h1>
+
+    <div class="mt-4">
+        <a href="{% url 'users:login' %}" class="btn btn-primary btn-lg mx-2">Login</a>
+        <a href="{% url 'users:register' %}" class="btn btn-success btn-lg mx-2">Register</a>
+        <a href="{% url 'users:logout' %}" class="btn btn-danger btn-lg mx-2">Logout</a>
+    </div>
+</div>
+
+<!-- Footer Information -->
+<div class="mt-5 text-center">
+    <p>Developed by <strong>Your Name</strong></p>
+    <p>Full-stack developer | Django Enthusiast</p>
+    <p>Contact: <a href="https://github.com/MelvinKhakabo" target="_blank">GitHub</a></p>
+</div>
+
+{% endblock %}
