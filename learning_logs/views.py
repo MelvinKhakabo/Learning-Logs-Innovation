@@ -8,21 +8,19 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
 from .models import Topic
 from django.contrib.auth.decorators import login_required
+
 from .models import Topic
-
-
+from django.shortcuts import render
+from .models import Topic
 @login_required(
 login_url='users:login'
 ) 
 def topics(request):
-    """Show all topics."""
-    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
-    #Make sure the tpoic belongs to the current user
-    if topic.owner != request.user:
-       raise Http404
-    context = {'topics': topics}
-    return render(request, 'learning_logs/topics.html', context)
-
+    topic_list = Topic.objects.all()
+    # If you want to filter topics by the logged-in user, you can do something like:
+    if request.user.is_authenticated:
+        topic_list = topic_list.filter(owner=request.user)
+    return render(request, 'learning_logs/topics.html', {'topics': topic_list})
 
 
 from django.shortcuts import render, redirect
