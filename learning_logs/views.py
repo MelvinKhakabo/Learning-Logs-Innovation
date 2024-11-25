@@ -129,3 +129,5 @@ def home(request):
     return render(request, 'learning_logs/home.html')
 # learning_logs/views.py
 
+from django.shortcuts import render, redirect
+

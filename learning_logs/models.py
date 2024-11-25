@@ -1,17 +1,16 @@
 from django.db import models
-from django.utils import timezone
-default = lambda: timezone.now()
-
-
-from django.db import models
 from django.contrib.auth.models import User
 
+from django.utils import timezone
+default = lambda: timezone.now()
 class Topic(models.Model):
     text = models.CharField(max_length=200)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  # Ensure this exists
 
     def __str__(self):
         return self.text
+
 
 
 
