@@ -4,7 +4,7 @@ from . import views
 app_name = 'learning_logs'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.home, name='home'),
     path('topics/', views.topics, name='topics'),
     path('topics/<int:topic_id>/', views.topic, name='topic'),
     path('topics/new/', views.new_topic, name='new_topic'),

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-def index(request):
-    return render(request, 'learning_logs/home.html')
+def home(request):
+    return redirect(request, 'learning_logs/home.html')
 
 
 from django.shortcuts import render
