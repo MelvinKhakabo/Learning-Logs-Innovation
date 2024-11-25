@@ -1,0 +1,25 @@
+# Python-related
+__pycache__/
+*.py[cod]
+.Python
+
+# Django-related
+*.log
+*.pot
+*.pyc
+*.pyo
+.env
+.venv
+venv/
+env/
+.idea/
+db.sqlite3
+/staticfiles/
+
+# User-specific
+.DS_Store
+Thumbs.db
+
+# IDE or text editor specific
+.vscode/
+.idea/
