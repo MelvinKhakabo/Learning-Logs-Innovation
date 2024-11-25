@@ -61,7 +61,7 @@ def login_view(request):
 def logout_view(request):
     """Logs the user out and redirects to the home page."""
     logout(request)  # This logs the user out
-    return redirect('learning_logs:index')  # Redirect to the home page after logout
+    return redirect('learning_logs:home')  # Redirect to the home page after logout
 
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
