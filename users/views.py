@@ -15,7 +15,7 @@ def register(request):
             new_user = form.save()
             # Log the user in and redirect to home page.
             login(request, new_user)
-            return redirect('learning_logs:index')  # Redirect to home page after successful registration
+            return redirect('learning_logs:home')  # Redirect to home page after successful registration
 
     # Display a blank or invalid form.
     context = {'form': form}
@@ -44,7 +44,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('learning_logs:index')  # Redirect to the home page after successful login
+                return redirect('learning_logs:home')  # Redirect to the home page after successful login
             else:
                 # Invalid login credentials
                 form.add_error(None, "Invalid username or password.")
